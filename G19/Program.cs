@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddDbContext<G19Context>(options => options.UseSqlite($"Data Source={Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\DB\G19DB.db"))}"));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
