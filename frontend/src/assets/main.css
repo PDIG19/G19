@@ -2,7 +2,7 @@ body {
 
   background-size: 1920px 2900px; 
    left: 0px;
-   width: 1920px;
+   width: auto;
    font-family: 'Amatic SC', cursive;
    font-size: 31px;
    background-color: grey;
@@ -13,7 +13,7 @@ body {
 }
 
 #navBar {
-  display: flex;
+  display: fixed;
   justify-content: space-evenly;
   background-color: white;
 }
@@ -38,10 +38,12 @@ body {
 }
 
 .footer {
-  margin-top: 140px;
+  position: fixed;
+  bottom: 0;
   text-align: center;
   background-color: black;
   color: white;
   line-height: 3pt;
   padding: 0.5px;
+  width: 100%;
 }

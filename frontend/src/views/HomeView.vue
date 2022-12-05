@@ -1,8 +1,5 @@
-<script setup>
-</script>
-
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="frontpage">
+    <h1>Frontpage</h1>
+  </div>
 </template>
