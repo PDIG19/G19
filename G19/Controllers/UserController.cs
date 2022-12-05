@@ -43,10 +43,7 @@ public class UserController : ControllerBase
     [Route("Login")]
     public ActionResult Login(User user)
     {
-        // We would like to check if the user exists in the Db
-        // If it does we would like to verify the password with the Db password that is encrypted
-        // If its true we would like to return a jwttoken 
-        // Else return 403 auth issues
+ 
         var exists = _G19Context.Users.Any(u=>u.Email==user.Email);
         if(!exists)
         {

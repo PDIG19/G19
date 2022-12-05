@@ -41,9 +41,11 @@ var manufacturer = await _G19Context.Manufacturers.FindAsync(mouse.Manufacturer.
 if(manufacturer == null){
     return BadRequest();
 }
-manufacturer.Mouses.Add(mouse);
+mouse.Manufacturer = manufacturer;
+var result = await _G19Context.Mouses.AddAsync(mouse);
+manufacturer.Mouses.Add (result.Entity);
 _G19Context.SaveChanges();
-return Ok();
+return Ok(mouse.GetMouseDTO());
 }
 
 [HttpPut]

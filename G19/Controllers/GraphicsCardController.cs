@@ -41,9 +41,11 @@ var manufacturer = await _G19Context.Manufacturers.FindAsync(graphicsCard.Manufa
 if(manufacturer == null){
     return BadRequest();
 }
-manufacturer.GraphicsCards.Add(graphicsCard);
+graphicsCard.Manufacturer = manufacturer;
+var result = await _G19Context.GraphicsCards.AddAsync(graphicsCard);
+manufacturer.GraphicsCards.Add (result.Entity);
 _G19Context.SaveChanges();
-return Ok();
+return Ok(graphicsCard.GetGraphicsCardDTO());
 }
 
 [HttpPut]

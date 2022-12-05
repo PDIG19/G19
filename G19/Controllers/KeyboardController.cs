@@ -41,9 +41,11 @@ var manufacturer = await _G19Context.Manufacturers.FindAsync(keyboard.Manufactur
 if(manufacturer == null){
     return BadRequest();
 }
-manufacturer.Keyboards.Add(keyboard);
+keyboard.Manufacturer = manufacturer;
+var result = await _G19Context.Keyboards.AddAsync(keyboard);
+manufacturer.Keyboards.Add (result.Entity);
 _G19Context.SaveChanges();
-return Ok();
+return Ok(keyboard.GetKeyboardDTO());
 }
 
 [HttpPut]

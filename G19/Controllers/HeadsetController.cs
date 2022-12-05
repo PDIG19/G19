@@ -41,9 +41,11 @@ var manufacturer = await _G19Context.Manufacturers.FindAsync(headset.Manufacture
 if(manufacturer == null){
     return BadRequest();
 }
-manufacturer.Headsets.Add(headset);
+headset.Manufacturer = manufacturer;
+var result = await _G19Context.Headsets.AddAsync(headset);
+manufacturer.Headsets.Add (result.Entity);
 _G19Context.SaveChanges();
-return Ok();
+return Ok(headset.GetHeadsetDTO());
 }
 
 [HttpPut]

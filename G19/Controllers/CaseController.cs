@@ -35,30 +35,32 @@ return Ok(Case);
 
 [HttpPost]
 [Route("/Case")]
-public async Task<ActionResult> Create(Case Case)
+public async Task<ActionResult> Create(Case _case)
 {
-var manufacturer = await _G19Context.Manufacturers.FindAsync(Case.Manufacturer.ManufacturerId);
+var manufacturer = await _G19Context.Manufacturers.FindAsync(_case.Manufacturer.ManufacturerId);
 if(manufacturer == null){
     return BadRequest();
 }
-manufacturer.Cases.Add(Case);
+_case.Manufacturer = manufacturer;
+var result = await _G19Context.Cases.AddAsync(_case);
+manufacturer.Cases.Add (result.Entity);
 _G19Context.SaveChanges();
-return Ok();
+return Ok(_case.GetCaseDTO());
 }
 
 [HttpPut]
 [Route("/Case")]
-public async Task<ActionResult> Update(Case Case)
+public async Task<ActionResult> Update(Case _case)
 {
-var find = await _G19Context.Cases.FindAsync(Case.CaseId);
+var find = await _G19Context.Cases.FindAsync(_case.CaseId);
 if(find == null)
 {
     return BadRequest();
 }
-find.Name = Case.Name;
+find.Name = _case.Name;
 find.Updated = DateTime.UtcNow;
-find.Description = Case.Description;
-find.Price = Case.Price;
+find.Description = _case.Description;
+find.Price = _case.Price;
 _G19Context.SaveChanges();
 return Ok(find);
 }

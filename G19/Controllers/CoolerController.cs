@@ -38,12 +38,15 @@ return Ok(Cooler);
 public async Task<ActionResult> Create(Cooler cooler)
 {
 var manufacturer = await _G19Context.Manufacturers.FindAsync(cooler.Manufacturer.ManufacturerId);
-if(manufacturer == null){
+if(manufacturer == null)
+{
     return BadRequest();
 }
-manufacturer.Coolers.Add(cooler);
+cooler.Manufacturer = manufacturer;
+var result = await _G19Context.Coolers.AddAsync(cooler);
+manufacturer.Coolers.Add (result.Entity);
 _G19Context.SaveChanges();
-return Ok();
+return Ok(cooler.GetCoolerDTO());
 }
 
 [HttpPut]

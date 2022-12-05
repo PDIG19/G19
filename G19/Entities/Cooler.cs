@@ -1,3 +1,4 @@
+
 public class Cooler 
 {
     public long CoolerId{get;set;}
@@ -7,4 +8,8 @@ public class Cooler
     public DateTime Created{get;set;}
     public DateTime Updated{get;set;}
     public Manufacturer Manufacturer {get;set;}
+    public CoolerDTO GetCoolerDTO()
+    {
+        return new CoolerDTO(this);
+    }
 }

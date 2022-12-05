@@ -41,9 +41,11 @@ var manufacturer = await _G19Context.Manufacturers.FindAsync(processor.Manufactu
 if(manufacturer == null){
     return BadRequest();
 }
-manufacturer.Processors.Add(processor);
+processor.Manufacturer = manufacturer;
+var result = await _G19Context.Processors.AddAsync(processor);
+manufacturer.Processors.Add (result.Entity);
 _G19Context.SaveChanges();
-return Ok();
+return Ok(processor.GetProcessorDTO());
 }
 
 [HttpPut]

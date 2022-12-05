@@ -35,15 +35,17 @@ return Ok(PowerSupply);
 
 [HttpPost]
 [Route("/PowerSupply")]
-public async Task<ActionResult> Create(PowerSupply PowerSupply)
+public async Task<ActionResult> Create(PowerSupply powerSupply)
 {
-var manufacturer = await _G19Context.Manufacturers.FindAsync(PowerSupply.Manufacturer.ManufacturerId);
+var manufacturer = await _G19Context.Manufacturers.FindAsync(powerSupply.Manufacturer.ManufacturerId);
 if(manufacturer == null){
     return BadRequest();
 }
-manufacturer.PowerSupplies.Add(PowerSupply);
+powerSupply.Manufacturer = manufacturer;
+var result = await _G19Context.PowerSupplies.AddAsync(powerSupply);
+manufacturer.PowerSupplies.Add (result.Entity);
 _G19Context.SaveChanges();
-return Ok();
+return Ok(powerSupply.GetPowerSupplyDTO());
 }
 
 [HttpPut]

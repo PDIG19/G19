@@ -41,9 +41,11 @@ var manufacturer = await _G19Context.Manufacturers.FindAsync(monitor.Manufacture
 if(manufacturer == null){
     return BadRequest();
 }
-manufacturer.Monitors.Add(monitor);
+monitor.Manufacturer = manufacturer;
+var result = await _G19Context.Monitors.AddAsync(monitor);
+manufacturer.Monitors.Add (result.Entity);
 _G19Context.SaveChanges();
-return Ok();
+return Ok(monitor.GetMonitorDTO());
 }
 
 [HttpPut]

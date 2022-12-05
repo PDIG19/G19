@@ -41,9 +41,11 @@ var manufacturer = await _G19Context.Manufacturers.FindAsync(motherboard.Manufac
 if(manufacturer == null){
     return BadRequest();
 }
-manufacturer.Motherboards.Add(motherboard);
+motherboard.Manufacturer = manufacturer;
+var result = await _G19Context.Motherboards.AddAsync(motherboard);
+manufacturer.Motherboards.Add (result.Entity);
 _G19Context.SaveChanges();
-return Ok();
+return Ok(motherboard.GetMotherboardDTO());
 }
 
 [HttpPut]

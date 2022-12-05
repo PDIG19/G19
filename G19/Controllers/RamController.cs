@@ -41,9 +41,11 @@ var manufacturer = await _G19Context.Manufacturers.FindAsync(ram.Manufacturer.Ma
 if(manufacturer == null){
     return BadRequest();
 }
-manufacturer.Rams.Add(ram);
+ram.Manufacturer = manufacturer;
+var result = await _G19Context.Rams.AddAsync(ram);
+manufacturer.Rams.Add (result.Entity);
 _G19Context.SaveChanges();
-return Ok();
+return Ok(ram.GetRamDTO());
 }
 
 [HttpPut]
