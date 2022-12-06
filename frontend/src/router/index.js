@@ -13,6 +13,7 @@ import PsuView from '../views/psu.vue'
 import CpuView from '../views/cpu.vue'
 import RamView from '../views/ram.vue'
 import ManufacturesView from '../views/manufactures.vue'
+import ContactView from '../views/contact.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -82,7 +83,11 @@ const router = createRouter({
       name: 'ram',
       component: RamView
     },
-    
+    {
+      path: '/contact',
+      name: 'contact',
+      component: ContactView
+    },
     {
       path: '/about',
       name: 'about',

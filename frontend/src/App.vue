@@ -13,7 +13,7 @@ import { sidebarWidth } from './components/Sidebar/state'
       <button id="navBarButton" onclick="window.location.href='login.html'">ITEMS</button>
       <button id="navBarButton" onclick="window.location.href='/'">HOME</button>
       <button id="navBarButton" onclick="window.location.href='menu.html'">MENU</button>
-      <button id="navBarButton" onclick="window.location.href='Contact.html'">CONTACT</button>
+      <button id="navBarButton" onclick="window.location.href='/Contact'">CONTACT</button>
       <button id="navBarButton" onclick="window.location.href='Cart.html'">CART</button>
       <button id="navBarButton" onclick="window.location.href='login.html'">LOG IN</button>
     </div>
