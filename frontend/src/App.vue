@@ -10,12 +10,10 @@ import { sidebarWidth } from './components/Sidebar/state'
   <div :style="{ 'margin-left': sidebarWidth}"></div>
   <header>
     <div id="navBar">
-      <button id="navBarButton" onclick="window.location.href='login.html'">ITEMS</button>
       <button id="navBarButton" onclick="window.location.href='/'">HOME</button>
-      <button id="navBarButton" onclick="window.location.href='menu.html'">MENU</button>
       <button id="navBarButton" onclick="window.location.href='/Contact'">CONTACT</button>
-      <button id="navBarButton" onclick="window.location.href='Cart.html'">CART</button>
-      <button id="navBarButton" onclick="window.location.href='login.html'">LOG IN</button>
+      <button id="navBarButton" onclick="window.location.href='/Cart'">CART</button>
+      <button id="navBarButton" onclick="window.location.href='/login'">LOG IN</button>
     </div>
   </header>
 
@@ -45,5 +43,10 @@ import { sidebarWidth } from './components/Sidebar/state'
 }
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+</style>
+<style>
+#navBarButton {
+  margin-left: 5px;
 }
 </style>
