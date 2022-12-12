@@ -10,21 +10,20 @@ import { sidebarWidth } from './components/Sidebar/state'
   <div :style="{ 'margin-left': sidebarWidth}"></div>
   <header>
     <div id="navBar">
-      <button id="navBarButton" onclick="window.location.href='/'">HOME</button>
-      <button id="navBarButton" onclick="window.location.href='/Contact'">CONTACT</button>
-      <button id="navBarButton" onclick="window.location.href='/Cart'">CART</button>
-      <button id="navBarButton" onclick="window.location.href='/login'">LOG IN</button>
+      <button id="navBarButton" onclick="window.location.href='/'" ><i class="fa fa-home"></i> Home</button>
+      <button id="navBarButton" onclick="window.location.href='/Contact'"><i class="fa-solid fa-phone"></i> Contact</button>
+      <button id="navBarButton" onclick="window.location.href='/Cart'"><i class="fa-solid fa-cart-shopping"></i> CART</button>
+      <button id="navBarButton" onclick="window.location.href='/login'"><i class="fa-solid fa-right-to-bracket"></i> LOG IN</button>
     </div>
   </header>
-
-  <footer class="footer">
-            <p> Email:  </p>
-            <p> Phone Number: +35845321654 </p>
-            <p> Address: Myllykatu 160, Oulu 90069 </p>
-        </footer>
-
   <RouterView />
+  <footer class="footer">
+    <p> Email: <button id="textButton" onclick="window.location.href='/Contact'">groub19store@gmail.com</button>  </p>
+    <p> Phone Number: +35845321654 </p>
+    <p> Address: Myllykatu 160, Oulu 90069 </p>
+  </footer>
 </template>
+
 
 <style>
 #app {
@@ -33,20 +32,5 @@ import { sidebarWidth } from './components/Sidebar/state'
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
-<style>
-#navBarButton {
-  margin-left: 5px;
 }
 </style>

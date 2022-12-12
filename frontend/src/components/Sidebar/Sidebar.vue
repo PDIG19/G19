@@ -13,13 +13,13 @@ export default {
 
 <template>
     <div class="sidebar" :style="{ width: sidebarWidth }">
-        <h1>
+        <h2>
             <span v-if="collapsed">
                 <div>G</div>
                 <div>19</div>
             </span>
-            <span v-else>Categories</span>
-        </h1>
+            <span v-else>Categories</span> 
+        </h2>
             <SidebarLink to="/cases" icon="fa-solid fa-grip-lines-vertical">Cases</SidebarLink>
             <SidebarLink to="/computers" icon="fa-solid fa-grip-lines-vertical">Computers</SidebarLink>
             <SidebarLink to="/coolers" icon="fa-solid fa-grip-lines-vertical">Coolers</SidebarLink>
@@ -63,12 +63,12 @@ export default {
   left: 0;
   bottom: 0;
   padding: 0.5em;
-  transition: 0.3s ease;
+  transition: 0.4s ease;
   display: flex;
   flex-direction: column;
 }
 .sidebar h1 {
-  height: 2.5em;
+  height: 2em;
 }
 .collapse-icon {
   position: absolute;
