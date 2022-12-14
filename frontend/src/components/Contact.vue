@@ -1,33 +1,52 @@
 <template>
-  <header>
-
-  <form ref="form" @submit.prevent="sendEmail">
-    <div>
-      <input type="text" placeholder="Your name" name="from_name" required />
-    </div>
-
-    <div>
-      <input type="email" placeholder="Email" name="email_id" required />
-    </div>
-
-    <div>
-      <textarea placeholder="Your message" name="message" required />
-    </div>
-
-    <div>
-      <button type="submit">Send a message</button>
-    </div>
-  </form>
-  </header>
+  <div id="app">
+    <app-header></app-header>
+    <form ref="form" class="contactform" @submit.prevent="sendEmail">
+       <h4> Contact Us </h4>
+      <fieldset>
+        <div>
+          <label class="label" for="name">Name</label>
+          <input type="text" name="from_name" id="name" v-model="name" required />
+        </div>
+        <div>
+          <label class="label" for="email">Email</label>
+          <input type="email" name="email_id" id="email" v-model="email.value" required />
+        </div>
+        <div>
+          <label class="label" for="textarea">Message</label>
+          <textarea class="message" name="message" id="textarea" v-model="message.text" :maxlength="message.maxlength"></textarea>
+          <span class="counter">{{ message.text.length }} / {{ message.maxlength }}</span>
+        </div>
+        <div>
+          <button class="submitbtn" type="submit">Send a message</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
 </template>
-
+  
 <script>
+
 import emailjs from '@emailjs/browser';
 
 export default {
-
-
-methods: {
+  name: 'app',
+  data: function() {
+    return {
+      name: "",
+      email: {
+        value: "",
+      },
+      message: {
+        text: "",
+        maxlength: 255
+      },
+    }
+  },
+  methods: {
+    submit: function() {
+      this.submitted = true;
+    },
     sendEmail() {
       emailjs.sendForm('service_a4fm5kk', 'template_33hrwsq', this.$refs.form, 'gflxB7s4eEVe0yG89')
         .then((result) => {
@@ -36,13 +55,13 @@ methods: {
             console.log('FAILED...', error.text);
         });
     }
-  }
-
-};
-</script>
+  },
+  
+}
+</script>  
 
 <style scoped>
-.contactform-form {
+.contactform {
   font-size: 16px;
   width: 500px;
   padding: 15px 30px;
@@ -53,19 +72,19 @@ methods: {
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
-.contactform-form fieldset {
+.contactform fieldset {
   margin: 24px 0 0 0;
 }
 
-.contactform-form div {
+.contactform div {
   position: relative;
   margin: 20px 0;
 }
 
-.contactform-form input[type="text"],
-.contactform-form input[type="email"],
-.contactform-form textarea,
-.contactform-form select {
+.contactform input[type="text"],
+.contactform input[type="email"],
+.contactform textarea,
+.contactform select {
   padding: 12px;
   border: 1px solid #cfd9db;
   background-color: #ffffff;
@@ -73,38 +92,46 @@ methods: {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
 }
 
-.contactform-form textarea {
+.contactform textarea {
   min-height: 120px;
   resize: vertical;
   overflow: auto;
 }
 
-.contactform-form .label {
+.contactform .label {
   display: block;
 }
 
-.contactform-form h4,
-.contactform-form .label {
+.contactform h4,
+.contactform .label {
   color: #000000;
   margin-bottom: 10px;
 }
 
-form.contactform-form textarea#textarea {
+form.contactform textarea#textarea {
   margin-left: 61px;
   padding: 18px;
 }
-form.contactform-form input[type="submit"] {
-    background-image: none;
-    background: #1979c3;
-    border: 1px solid #1979c3;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-    font-weight: 600;
-    padding: 6px 12px;
-    font-size: 18px;
-    box-sizing: border-box;
-    vertical-align: middle;
+</style>
+
+<style>
+.submitbtn {
+  padding: 0.7rem 2rem;
+  margin-top: 5px;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+  background: #2f855a;
+  border-radius: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 24px 24px 84px #2d8d5b, inset -12px -12px 14px #3abe7c,inset 10px 10px 20px #17d177;
+}
+.submitbtn:hover {
+  color: #2fbe72;
 }
 </style>

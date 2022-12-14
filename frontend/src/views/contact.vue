@@ -10,6 +10,5 @@ export default {
 </script>
 
 <template>
-  <h2 class="contact">Contact us Via email</h2>
     <Contact />
 </template>
