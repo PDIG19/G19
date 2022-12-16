@@ -19,7 +19,7 @@ const fetcher = function(url){
 export default {
   name: 'App',
   setup() {
-    const { data: cooler, error: coolerError } = useSWRV('https://localhost:7233/swagger/v1/swagger.json#/G19/Ccontrollers/CoolerController', fetcher)
+    const { data: cooler, error: coolerError } = useSWRV('https://localhost:7233/Coolers', fetcher)
  
     return {
       cooler,
