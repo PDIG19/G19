@@ -1,12 +1,5 @@
 <template>
-  <div class="data">
-    <p v-if="coolerError">Sorry, there's been an error</p>
-    <ul>
-      <li v-for="item in cooler" v-bind:key="item.id">
-        <a v-bind:href="item.link" target="blank">{{ item.title }}</a>
-        </li>
-    </ul>
-</div>
+  <div class="data">{{ cooler }}</div>
 </template>
 
 <script>
@@ -19,11 +12,10 @@ const fetcher = function(url){
 export default {
   name: 'App',
   setup() {
-    const { data: cooler, error: coolerError } = useSWRV('https://localhost:7233/Coolers', fetcher)
+    const { data: cooler } = useSWRV('https://localhost:7233/Coolers', fetcher)
  
     return {
       cooler,
-      coolerError,
     }
   },
 }

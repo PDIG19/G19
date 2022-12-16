@@ -32,7 +32,6 @@ export default {
             <SidebarLink to="/psu" icon="fa-solid fa-grip-lines-vertical">PSU</SidebarLink>
             <SidebarLink to="/cpu" icon="fa-solid fa-grip-lines-vertical">CPU</SidebarLink>
             <SidebarLink to="/ram" icon="fa-solid fa-grip-lines-vertical">RAMS</SidebarLink>
-            <SidebarLink to="/manufactures" icon="fa-solid fa-grip-lines-vertical">Manufactures</SidebarLink>
         <span
             class="collapse-icon"
             :class="{ 'rotate-180': collapsed }"
