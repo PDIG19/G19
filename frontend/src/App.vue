@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import Sidebar from '@/components/Sidebar/Sidebar.vue'
 import { sidebarWidth } from './components/Sidebar/state'
+import useSWRV from 'swrv'
 </script>
 
 
