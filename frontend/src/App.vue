@@ -10,7 +10,7 @@ import useSWRV from 'swrv'
   <Sidebar />
   <div :style="{ 'margin-left': sidebarWidth}"></div>
   <header>
-    <div id="navBar">
+    <div id="navBar" class="navBar">
       <button id="navBarButton" onclick="window.location.href='/'" ><i class="fa fa-home"></i> Home</button>
       <button id="navBarButton" onclick="window.location.href='/Contact'"><i class="fa-solid fa-phone"></i> Contact</button>
       <button id="navBarButton" onclick="window.location.href='/Cart'"><i class="fa-solid fa-cart-shopping"></i> CART</button>
@@ -33,5 +33,21 @@ import useSWRV from 'swrv'
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-image: url(./assets/bc.jpg);
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+.footer {
+  background-image: url(./assets/bc.jpg);
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+.navBar {
+  background-image: url(./assets/bc.jpg);
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
 }
 </style>

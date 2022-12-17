@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
       <app-header></app-header>
       <form ref="form" class="contactform" @submit.prevent="login" >
           <h4> Login </h4>
@@ -68,7 +68,7 @@ margin: 24px 0 0 0;
 
 .contactform div {
 position: relative;
-margin: 20px 0;
+margin: 40px 0;
 }
 
 .contactform input[type="text"], [type="password"],
