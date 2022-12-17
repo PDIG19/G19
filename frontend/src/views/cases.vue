@@ -44,7 +44,7 @@ export default {
 .buybtn {
   padding: 0.7rem 2rem;
   margin-top: -42px;
-  margin-left: -750px;
+  margin-left: -900px;
   border: none;
   cursor: pointer;
   background: #2f855a;
