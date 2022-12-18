@@ -11,7 +11,7 @@
   </div>
   <div class="data">{{ case3 }}
     <div>
-      <button class="buybtn">Buy</button>
+      <button @click="addToCart" class="buybtn">Buy</button>
     </div>
   </div>
 </template>
@@ -19,10 +19,17 @@
 <script>
 import useSWRV from 'swrv'
 
-
+const addToCart = () => {
+    for (var i = 0; i < 1; i++) {
+        cart.push(name[i].innerText)
+        cart.push(parseInt(price[i].innerText))
+    }
+    console.log(cart)
+}
 const fetcher = function(url){
   return fetch(url).then(r => r.json())
 }
+
 
 export default {
   name: 'App',
