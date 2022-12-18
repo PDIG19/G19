@@ -15,6 +15,7 @@ import RamView from '../views/ram.vue'
 import ContactView from '../views/contact.vue'
 import LoginView from '../views/login.vue'
 import RegisterView from '../views/register.vue'
+import CartView from '../views/cart.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -98,6 +99,11 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: RegisterView
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: CartView
     }
   ]
 })

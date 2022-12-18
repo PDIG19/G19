@@ -1,5 +1,14 @@
 <template>
-  <div class="data">{{ cooler }}</div>
+  <div class="data">{{ ram1 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
+  <div class="data">{{ ram2 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -12,17 +21,12 @@ const fetcher = function(url){
 export default {
   name: 'App',
   setup() {
-    const { data: cooler } = useSWRV('https://localhost:7233/Rams', fetcher)
+    const { data: ram1 } = useSWRV('https://localhost:7233/Ram/1', fetcher)
+    const { data: ram2 } = useSWRV('https://localhost:7233/Ram/2', fetcher)
  
     return {
-      cooler,
+      ram1, ram2
     }
   },
 }
 </script>
-
-<style>
-.data {
-  padding-left: 300px;
-}
-</style>

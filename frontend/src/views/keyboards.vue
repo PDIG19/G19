@@ -1,5 +1,14 @@
 <template>
-  <div class="data">{{ cooler }}</div>
+  <div class="data">{{ keyboard1 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
+  <div class="data">{{ keyboard2 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -12,17 +21,12 @@ const fetcher = function(url){
 export default {
   name: 'App',
   setup() {
-    const { data: cooler } = useSWRV('https://localhost:7233/Keyboards', fetcher)
+    const { data: keyboard1 } = useSWRV('https://localhost:7233/Keyboard/1', fetcher)
+    const { data: keyboard2 } = useSWRV('https://localhost:7233/Keyboard/2', fetcher)
  
     return {
-      cooler,
+      keyboard1, keyboard2
     }
   },
 }
 </script>
-
-<style>
-.data {
-  padding-left: 300px;
-}
-</style>

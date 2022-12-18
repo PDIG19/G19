@@ -1,5 +1,19 @@
 <template>
-  <div class="data">{{ cooler }}</div>
+  <div class="data">{{ cooler1 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
+  <div class="data">{{ cooler2 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
+  <div class="data">{{ cooler3 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -12,17 +26,14 @@ const fetcher = function(url){
 export default {
   name: 'App',
   setup() {
-    const { data: cooler } = useSWRV('https://localhost:7233/Coolers', fetcher)
+    const { data: cooler1 } = useSWRV('https://localhost:7233/Cooler/1', fetcher)
+    const { data: cooler2 } = useSWRV('https://localhost:7233/Cooler/10', fetcher)
+    const { data: cooler3 } = useSWRV('https://localhost:7233/Cooler/11', fetcher)
  
     return {
-      cooler,
+      cooler1,cooler2, cooler3
     }
   },
 }
 </script>
 
-<style>
-.data {
-  padding-left: 300px;
-}
-</style>

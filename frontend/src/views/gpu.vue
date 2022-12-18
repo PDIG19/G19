@@ -1,5 +1,14 @@
 <template>
-  <div class="data">{{ cooler }}</div>
+  <div class="data">{{ gpu1 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
+  <div class="data">{{ gpu2 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -12,18 +21,12 @@ const fetcher = function(url){
 export default {
   name: 'App',
   setup() {
-    const { data: cooler, error: coolerError } = useSWRV('https://localhost:7233/GraphicsCards', fetcher)
+    const { data: gpu1 } = useSWRV('https://localhost:7233/GraphicsCard/3', fetcher)
+    const { data: gpu2 } = useSWRV('https://localhost:7233/GraphicsCard/4', fetcher)
  
     return {
-      cooler,
-      coolerError,
+      gpu1,gpu2
     }
   },
 }
 </script>
-
-<style>
-.data {
-  padding-left: 300px;
-}
-</style>

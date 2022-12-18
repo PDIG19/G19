@@ -1,5 +1,14 @@
 <template>
-  <div class="data">{{ cooler }}</div>
+  <div class="data">{{ monitor1 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
+  <div class="data">{{ monitor2 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -12,17 +21,12 @@ const fetcher = function(url){
 export default {
   name: 'App',
   setup() {
-    const { data: cooler } = useSWRV('https://localhost:7233/Monitors', fetcher)
+    const { data: monitor1 } = useSWRV('https://localhost:7233/Monitor/1', fetcher)
+    const { data: monitor2 } = useSWRV('https://localhost:7233/Monitor/2', fetcher)
  
     return {
-      cooler,
+      monitor1, monitor2
     }
   },
 }
 </script>
-
-<style>
-.data {
-  padding-left: 300px;
-}
-</style>

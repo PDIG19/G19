@@ -1,5 +1,14 @@
 <template>
-  <div class="data">{{ cooler }}</div>
+  <div class="data">{{ motherboard1 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
+  <div class="data">{{ motherboard2 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -12,17 +21,12 @@ const fetcher = function(url){
 export default {
   name: 'App',
   setup() {
-    const { data: cooler } = useSWRV('https://localhost:7233/Motherboards', fetcher)
+    const { data: motherboard1} = useSWRV('https://localhost:7233/Motherboard/1', fetcher)
+    const { data: motherboard2 } = useSWRV('https://localhost:7233/Motherboard/2', fetcher)
  
     return {
-      cooler,
+      motherboard1, motherboard2
     }
   },
 }
 </script>
-
-<style>
-.data {
-  padding-left: 300px;
-}
-</style>

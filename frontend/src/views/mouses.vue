@@ -1,5 +1,14 @@
 <template>
-  <div class="data">{{ cooler }}</div>
+  <div class="data">{{ mouse1 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
+  <div class="data">{{ mouse2 }}
+    <div>
+      <button class="buybtn">Buy</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -12,17 +21,12 @@ const fetcher = function(url){
 export default {
   name: 'App',
   setup() {
-    const { data: cooler } = useSWRV('https://localhost:7233/Mouses', fetcher)
+    const { data: mouse1 } = useSWRV('https://localhost:7233/Mouse/1', fetcher)
+    const { data: mouse2 } = useSWRV('https://localhost:7233/Mouse/2', fetcher)
  
     return {
-      cooler,
+      mouse1, mouse2
     }
   },
 }
 </script>
-
-<style>
-.data {
-  padding-left: 300px;
-}
-</style>
